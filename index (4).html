@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gloria Birdmoney — Luxury Jewelry, Fashion &amp; Accessories</title>
+<meta name="description" content="Gloria Birdmoney — an exquisite collection of jewelry, fashion, and accessories for a bird of considerable means. Part of the QuarkForce Universe.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,340;0,9..144,440;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --black:#100C0D;
+  --charcoal:#221D1F;
+  --charcoal-soft:#2C262A;
+  --ivory:#F4EFE5;
+  --ivory-dim:#E8E0D0;
+  --gold:#B48A47;
+  --gold-light:#D9B876;
+  --gold-dim:#8A6935;
+  --champagne:#E4D3AF;
+  --dusty:#C48A83;
+  --plum:#3B1F33;
+  --plum-light:#6C3D5D;
+  --pearl:#ECE4D8;
+  --line: rgba(244,239,229,0.14);
+  --line-dark: rgba(16,12,13,0.12);
+  --shadow: 0 24px 60px rgba(16,12,13,0.35);
+  --serif: 'Fraunces', serif;
+  --sans: 'Inter', sans-serif;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--ivory);
+  color:var(--charcoal);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:440;margin:0;letter-spacing:-0.01em;}
+p{margin:0;}
+.serif{font-family:var(--serif);}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:0.72rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--gold);
+}
+.on-dark .eyebrow{color:var(--gold-light);}
+.dialogue{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  color:var(--gold-dim);
+}
+.on-dark .dialogue{color:var(--champagne);}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+:focus-visible{outline:2px solid var(--gold-light); outline-offset:3px;}
+
+.wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+@media (max-width:700px){ .wrap{padding:0 20px;} }
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px 32px;
+  background:transparent;
+  transition:background .4s var(--ease), padding .4s var(--ease), box-shadow .4s var(--ease);
+}
+.nav.scrolled{
+  background:rgba(16,12,13,0.92);
+  backdrop-filter:blur(10px);
+  padding:14px 32px;
+  box-shadow:0 1px 0 var(--line);
+}
+.nav-mark{
+  font-family:var(--serif); font-size:1.28rem; letter-spacing:0.02em; color:var(--ivory);
+  display:flex; align-items:baseline; gap:8px;
+}
+.nav-mark small{font-family:var(--sans); font-size:0.6rem; letter-spacing:0.22em; color:var(--gold-light); text-transform:uppercase;}
+.nav-links{display:flex; gap:34px; align-items:center;}
+.nav-links a{
+  font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ivory-dim);
+  padding:6px 0; position:relative;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold-light);
+  transition:width .3s var(--ease);
+}
+.nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--ivory);}
+.nav-right{display:flex; align-items:center; gap:20px;}
+.icon-btn{
+  display:flex; align-items:center; gap:6px; color:var(--ivory); position:relative;
+  padding:6px;
+}
+.icon-btn svg{width:19px; height:19px;}
+.cart-count{
+  position:absolute; top:-4px; right:-4px; background:var(--gold); color:var(--black);
+  font-size:0.62rem; font-weight:700; width:16px; height:16px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.nav-burger{display:none;}
+@media (max-width:880px){
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed; inset:0; background:var(--black); z-index:300;
+  display:flex; flex-direction:column; padding:100px 32px 40px;
+  transform:translateY(-100%); transition:transform .45s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{
+  font-family:var(--serif); font-size:2rem; color:var(--ivory); padding:14px 0; border-bottom:1px solid var(--line);
+}
+.mobile-menu-close{position:absolute; top:24px; right:28px; color:var(--ivory);}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative; min-height:100svh; background:var(--black); overflow:hidden;
+  display:flex; align-items:stretch;
+}
+.hero-grid{
+  display:grid; grid-template-columns:1.05fr 0.95fr; width:100%; align-items:center;
+  padding:140px 32px 60px; max-width:1400px; margin:0 auto; gap:20px;
+}
+.hero-copy{position:relative; z-index:3;}
+.hero-copy .eyebrow{margin-bottom:22px; display:block;}
+.hero-title{
+  font-size:clamp(2.6rem, 6vw, 5.1rem); color:var(--ivory); line-height:0.98; font-weight:440;
+  opacity:0; transform:translateY(24px); animation:riseIn 1s var(--ease) 0.15s forwards;
+}
+.hero-title em{font-style:italic; color:var(--gold-light); font-weight:400;}
+.hero-sub{
+  margin-top:26px; max-width:420px; color:var(--ivory-dim); font-size:1.02rem; line-height:1.6;
+  opacity:0; transform:translateY(20px); animation:riseIn 1s var(--ease) 0.35s forwards;
+}
+.hero-ctas{
+  margin-top:38px; display:flex; gap:18px; flex-wrap:wrap;
+  opacity:0; transform:translateY(20px); animation:riseIn 1s var(--ease) 0.5s forwards;
+}
+@keyframes riseIn{to{opacity:1; transform:translateY(0);}}
+
+.btn{
+  font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;
+  padding:16px 30px; display:inline-flex; align-items:center; gap:10px;
+  transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+}
+.btn-gold{background:var(--gold); color:var(--black);}
+.btn-gold:hover{background:var(--gold-light); transform:translateY(-2px);}
+.btn-line{border:1px solid var(--line); color:var(--ivory);}
+.btn-line:hover{border-color:var(--gold-light); color:var(--gold-light); transform:translateY(-2px);}
+.btn-dark{border:1px solid var(--line-dark); color:var(--charcoal);}
+.btn-dark:hover{border-color:var(--gold); color:var(--gold-dim); transform:translateY(-2px);}
+.btn-fill-dark{background:var(--charcoal); color:var(--ivory);}
+.btn-fill-dark:hover{background:var(--black); transform:translateY(-2px);}
+.btn[disabled]{opacity:0.4; cursor:not-allowed; transform:none !important;}
+
+.hero-figure{
+  position:relative; height:100%; display:flex; align-items:flex-end; justify-content:center;
+  z-index:2;
+}
+.hero-glow{
+  position:absolute; bottom:2%; left:50%; transform:translateX(-50%);
+  width:70%; height:34%; background:radial-gradient(ellipse at center, rgba(180,138,71,0.45), rgba(180,138,71,0) 70%);
+  filter:blur(10px); z-index:1;
+}
+.hero-figure img{
+  position:relative; z-index:2; max-height:82vh; width:auto;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,0.55));
+  will-change:transform;
+}
+.gold-dust{position:absolute; inset:0; z-index:2; pointer-events:none;}
+.gold-dust span{
+  position:absolute; bottom:-10px; width:4px; height:4px; border-radius:50%; background:var(--gold-light);
+  opacity:0.7; animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) translateX(0); opacity:0;}
+  10%{opacity:0.8;}
+  100%{transform:translateY(-90vh) translateX(var(--drift,20px)); opacity:0;}
+}
+.hero-scroll{
+  position:absolute; bottom:26px; left:32px; z-index:3; color:var(--ivory-dim);
+  display:flex; align-items:center; gap:10px; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+}
+.hero-scroll .line{width:1px; height:34px; background:linear-gradient(var(--gold-light), transparent);}
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr; padding:120px 22px 40px; text-align:left;}
+  .hero-figure{order:-1; height:46vh; margin-bottom:10px;}
+  .hero-figure img{max-height:44vh;}
+  .hero-scroll{display:none;}
+}
+
+/* ============ SECTIONS shared ============ */
+.section{padding:120px 0;}
+@media (max-width:700px){.section{padding:76px 0;}}
+.section.on-dark{background:var(--black); color:var(--ivory);}
+.section.plum{background:var(--plum); color:var(--ivory);}
+.section-head{max-width:640px; margin-bottom:56px;}
+.section-head .eyebrow{display:block; margin-bottom:16px;}
+.section-head h2{font-size:clamp(2rem, 4vw, 3rem); line-height:1.05;}
+.section-head p.lede{margin-top:20px; font-size:1.05rem; line-height:1.65; color:var(--charcoal); opacity:0.75; max-width:520px;}
+.on-dark .section-head p.lede, .plum .section-head p.lede{color:var(--ivory-dim); opacity:0.85;}
+.divider{width:64px; height:1px; background:var(--gold); margin:20px 0;}
+
+/* ============ STORY ============ */
+.story{position:relative;}
+.story-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:center;}
+.story-portrait{
+  aspect-ratio:4/5; border:1px solid var(--line); border-radius:2px; overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(217,184,118,0.18), transparent 55%),
+    linear-gradient(150deg, var(--charcoal-soft), var(--black));
+  display:flex; align-items:flex-end; justify-content:center; padding-top:30px; position:relative;
+}
+.story-portrait img{max-height:100%; width:auto; filter:drop-shadow(0 18px 24px rgba(0,0,0,0.5));}
+.story-quote{
+  font-size:1.5rem; line-height:1.4; max-width:520px; margin:26px 0 30px;
+}
+.story-body p{font-size:1.02rem; line-height:1.75; color:var(--ivory-dim); margin-bottom:18px; max-width:520px;}
+.story-facts{display:flex; gap:40px; margin-top:36px; flex-wrap:wrap;}
+.story-facts div{border-left:1px solid var(--line); padding-left:16px;}
+.story-facts .num{font-family:var(--serif); font-size:1.9rem; color:var(--gold-light);}
+.story-facts .label{font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory-dim); margin-top:4px;}
+@media (max-width:880px){.story-grid{grid-template-columns:1fr; gap:36px;}}
+
+/* ============ PRODUCT GRID (shared: home teaser + shop) ============ */
+.grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:2px;
+  background:var(--line-dark);
+}
+.grid.on-dark{background:var(--line);}
+.card{
+  background:var(--ivory); padding:0; cursor:pointer; position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.on-dark .card{background:var(--black);}
+.card-art{
+  aspect-ratio:4/5; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.card-art .mono{
+  font-family:var(--serif); font-style:italic; font-size:3.4rem; color:rgba(244,239,229,0.5);
+  transition:transform .6s var(--ease);
+}
+.card:hover .card-art .mono{transform:scale(1.08) rotate(-2deg);}
+.card-art .cat-tag{
+  position:absolute; top:14px; left:14px; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:rgba(244,239,229,0.85); border:1px solid rgba(244,239,229,0.35); padding:5px 10px; border-radius:20px;
+}
+.tone-gold{background:linear-gradient(155deg,#7a5a2b,#B48A47 45%,#3a2a12);}
+.tone-plum{background:linear-gradient(155deg,#2a1526,#6C3D5D 45%,#1c0e19);}
+.tone-pearl{background:linear-gradient(155deg,#3a3530,#8f867a 45%,#2a2622);}
+.tone-ivory{background:linear-gradient(155deg,#4a4640,#9c9284 45%,#2c2924);}
+.tone-black{background:linear-gradient(155deg,#000,#2b2427 55%,#000);}
+.card-info{padding:20px 22px 24px; flex:1; display:flex; flex-direction:column;}
+.card-info .cname{font-family:var(--serif); font-size:1.14rem; margin-bottom:6px;}
+.card-info .ctag{font-size:0.86rem; color:var(--charcoal); opacity:0.62; margin-bottom:14px; line-height:1.4; flex:1;}
+.on-dark .card-info .ctag{color:var(--ivory-dim);}
+.card-info .cprice{font-size:0.95rem; letter-spacing:0.02em; color:var(--gold-dim); font-weight:600; margin-bottom:14px;}
+.on-dark .card-info .cprice{color:var(--gold-light);}
+.card-actions{display:flex; gap:10px;}
+.card-actions button{
+  flex:1; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; padding:11px 6px;
+  border:1px solid var(--line-dark); transition:all .3s var(--ease); white-space:nowrap;
+}
+.on-dark .card-actions button{border-color:var(--line);}
+.card-actions button:hover{background:var(--charcoal); color:var(--ivory); border-color:var(--charcoal);}
+.on-dark .card-actions button:hover{background:var(--ivory); color:var(--black); border-color:var(--ivory);}
+.card-actions button.add{background:var(--gold); color:var(--black); border-color:var(--gold);}
+.card-actions button.add:hover{background:var(--gold-light); border-color:var(--gold-light); color:var(--black);}
+
+.section-foot{margin-top:48px; display:flex; justify-content:center;}
+
+/* ============ SHOP FILTER BAR ============ */
+.filter-bar{
+  display:flex; gap:12px; flex-wrap:wrap; margin-bottom:40px; align-items:center; justify-content:space-between;
+}
+.filter-pills{display:flex; gap:10px; flex-wrap:wrap;}
+.pill{
+  font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; padding:9px 18px;
+  border:1px solid var(--line-dark); border-radius:22px; color:var(--charcoal); opacity:0.7;
+  transition:all .3s var(--ease);
+}
+.pill:hover{opacity:1;}
+.pill.active{background:var(--charcoal); color:var(--ivory); border-color:var(--charcoal); opacity:1;}
+.result-count{font-size:0.8rem; opacity:0.55;}
+
+/* ============ WARDROBE ============ */
+.looks{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line);}
+.look{background:var(--black); padding:44px 40px; position:relative;}
+.look .look-no{font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--gold-light); margin-bottom:14px; display:block;}
+.look h3{font-size:1.7rem; color:var(--ivory); margin-bottom:14px;}
+.look p{color:var(--ivory-dim); font-size:0.95rem; line-height:1.65; margin-bottom:20px;}
+.look-items{display:flex; flex-wrap:wrap; gap:8px;}
+.look-items span{
+  font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--champagne);
+  border:1px solid var(--line); padding:6px 12px; border-radius:20px; cursor:pointer; transition:border-color .3s;
+}
+.look-items span:hover{border-color:var(--gold-light);}
+@media (max-width:780px){.looks{grid-template-columns:1fr;}}
+
+/* ============ PRIVATE COLLECTION ============ */
+.private-hero{
+  text-align:center; padding-bottom:56px; border-bottom:1px solid var(--line); margin-bottom:56px;
+}
+.private-hero .divider{margin:24px auto;}
+.private-hero h2{font-size:clamp(2.2rem,5vw,3.4rem); max-width:760px; margin:0 auto;}
+.private-hero p{margin:22px auto 0; max-width:480px; color:var(--ivory-dim); line-height:1.7;}
+
+/* ============ PRODUCT DETAIL ============ */
+.pd{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:flex-start;}
+.pd-art{
+  aspect-ratio:4/5; position:sticky; top:110px; display:flex; align-items:center; justify-content:center;
+  border-radius:2px; overflow:hidden;
+}
+.pd-art .mono{font-family:var(--serif); font-style:italic; font-size:6rem; color:rgba(244,239,229,0.55);}
+.pd-info .eyebrow{margin-bottom:14px; display:block;}
+.pd-info h1{font-size:clamp(1.9rem,4vw,2.7rem); margin-bottom:10px; line-height:1.08;}
+.pd-tagline{font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--gold-dim); margin-bottom:20px;}
+.pd-price{font-size:1.25rem; font-weight:600; color:var(--charcoal); margin-bottom:26px;}
+.pd-desc{font-size:1rem; line-height:1.75; opacity:0.82; margin-bottom:28px; max-width:460px;}
+.pd-row{margin-bottom:26px;}
+.pd-row label{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:10px; opacity:0.65;}
+.opt-group{display:flex; gap:10px; flex-wrap:wrap;}
+.opt{
+  border:1px solid var(--line-dark); padding:10px 18px; font-size:0.82rem; transition:all .25s var(--ease);
+}
+.opt.sel{background:var(--charcoal); color:var(--ivory); border-color:var(--charcoal);}
+.qty-row{display:flex; align-items:center; gap:16px;}
+.qty-box{display:flex; align-items:center; border:1px solid var(--line-dark);}
+.qty-box button{padding:10px 16px; font-size:1rem;}
+.qty-box span{padding:0 14px; min-width:20px; text-align:center;}
+.pd-ctas{display:flex; gap:14px; margin:30px 0; flex-wrap:wrap;}
+.pd-story{
+  margin-top:36px; padding:26px 28px; background:var(--pearl); border-left:2px solid var(--gold);
+  font-family:var(--serif); font-style:italic; font-size:1.02rem; line-height:1.6; color:var(--charcoal); max-width:460px;
+}
+.pd-meta{display:flex; gap:30px; margin-top:30px; font-size:0.8rem; opacity:0.6; flex-wrap:wrap;}
+@media (max-width:880px){.pd{grid-template-columns:1fr; gap:36px;} .pd-art{position:static;}}
+
+/* ============ JOURNAL ============ */
+.journal-list{display:flex; flex-direction:column;}
+.j-row{
+  display:grid; grid-template-columns:120px 1fr auto; gap:30px; align-items:baseline;
+  padding:30px 0; border-bottom:1px solid var(--line-dark); cursor:pointer; transition:padding-left .3s var(--ease);
+}
+.j-row:hover{padding-left:12px;}
+.j-row .j-no{font-family:var(--serif); font-style:italic; color:var(--gold-dim); font-size:1.3rem;}
+.j-row h3{font-size:1.35rem;}
+.j-row .j-cat{font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.5;}
+.article{max-width:640px; margin:0 auto;}
+.article .eyebrow{display:block; margin-bottom:18px;}
+.article h1{font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.12; margin-bottom:26px;}
+.article p{font-size:1.06rem; line-height:1.8; opacity:0.85; margin-bottom:20px;}
+.article .dialogue{display:block; font-size:1.2rem; margin:30px 0; padding-left:20px; border-left:2px solid var(--gold);}
+.back-link{display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:40px; color:var(--gold-dim);}
+.on-dark .back-link{color:var(--gold-light);}
+.back-link:hover{text-decoration:underline;}
+
+/* ============ ABOUT / MEET GLORIA anchor within story handled above ============ */
+
+/* ============ CART DRAWER ============ */
+.scrim{position:fixed; inset:0; background:rgba(16,12,13,0.6); z-index:400; opacity:0; pointer-events:none; transition:opacity .35s var(--ease);}
+.scrim.open{opacity:1; pointer-events:auto;}
+.cart-drawer{
+  position:fixed; top:0; right:0; bottom:0; width:min(440px,92vw); background:var(--ivory); z-index:401;
+  transform:translateX(100%); transition:transform .45s var(--ease); display:flex; flex-direction:column;
+  box-shadow:var(--shadow);
+}
+.cart-drawer.open{transform:translateX(0);}
+.cart-head{display:flex; align-items:center; justify-content:space-between; padding:26px 28px; border-bottom:1px solid var(--line-dark);}
+.cart-head h3{font-size:1.3rem;}
+.cart-items{flex:1; overflow-y:auto; padding:10px 28px;}
+.cart-item{display:grid; grid-template-columns:64px 1fr auto; gap:16px; padding:20px 0; border-bottom:1px solid var(--line-dark); align-items:center;}
+.cart-item .ci-art{width:64px; height:80px; border-radius:2px; display:flex; align-items:center; justify-content:center;}
+.cart-item .ci-art .mono{font-family:var(--serif); font-style:italic; font-size:1.4rem; color:rgba(244,239,229,0.6);}
+.cart-item h4{font-size:0.95rem; margin-bottom:4px;}
+.cart-item .ci-opt{font-size:0.75rem; opacity:0.55; margin-bottom:8px;}
+.cart-item .ci-price{font-size:0.85rem; font-weight:600;}
+.ci-controls{display:flex; align-items:center; gap:10px; margin-top:8px;}
+.ci-controls .qty-box{transform:scale(0.9); transform-origin:left;}
+.ci-remove{font-size:0.7rem; text-decoration:underline; opacity:0.55;}
+.cart-empty{padding:60px 0; text-align:center; opacity:0.6; font-size:0.95rem;}
+.cart-foot{padding:24px 28px 30px; border-top:1px solid var(--line-dark);}
+.cart-line{display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.92rem;}
+.cart-line.total{font-size:1.1rem; font-weight:600; margin-top:16px;}
+.cart-foot .btn{width:100%; justify-content:center; margin-top:16px;}
+.cart-note{font-size:0.72rem; opacity:0.5; margin-top:14px; line-height:1.5;}
+.close-x{width:20px; height:20px;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
+.foot-top{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; padding-bottom:56px; border-bottom:1px solid var(--line);}
+.foot-brand .nav-mark{margin-bottom:16px;}
+.foot-brand p{color:var(--ivory-dim); font-size:0.92rem; line-height:1.7; max-width:280px;}
+.foot-col h5{font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); margin-bottom:18px;}
+.foot-col a{display:block; font-size:0.88rem; color:var(--ivory-dim); margin-bottom:12px;}
+.foot-col a:hover{color:var(--ivory);}
+.foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; flex-wrap:wrap; gap:16px;}
+.qf-link{
+  display:inline-flex; align-items:center; gap:10px; font-size:0.82rem; color:var(--ivory-dim); border:1px solid var(--line);
+  padding:12px 20px; border-radius:30px; transition:border-color .3s;
+}
+.qf-link:hover{border-color:var(--gold-light); color:var(--ivory);}
+.copy{font-size:0.76rem; opacity:0.45;}
+@media (max-width:780px){.foot-top{grid-template-columns:1fr 1fr; row-gap:36px;} .foot-bottom{flex-direction:column; align-items:flex-start;}}
+
+/* ============ MISC ============ */
+.view{display:none;}
+.view.active{display:block;}
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+.reveal.in{opacity:1; transform:translateY(0);}
+.page-hero{padding:150px 0 60px; text-align:left;}
+.crumb{font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase; opacity:0.5; margin-bottom:18px; display:block;}
+.toast{
+  position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px); z-index:500;
+  background:var(--charcoal); color:var(--ivory); padding:16px 26px; border-radius:4px; font-size:0.86rem;
+  opacity:0; pointer-events:none; transition:all .4s var(--ease); display:flex; align-items:center; gap:12px;
+  box-shadow:var(--shadow);
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#/home" class="nav-mark" data-link="home">GLORIA <span style="color:var(--gold-light)">B.</span><small>Est. Wherever She Pleases</small></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#/shop" data-link="shop">Shop</a>
+    <a href="#/wardrobe" data-link="wardrobe">Wardrobe</a>
+    <a href="#/private" data-link="private">Private Collection</a>
+    <a href="#/journal" data-link="journal">Journal</a>
+    <a href="#/about" data-link="about">About Gloria</a>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7Z"/><path d="M8 7V5.5A4 4 0 0 1 12 1.5a4 4 0 0 1 4 4V7"/></svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="icon-btn nav-burger" id="burgerBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="icon-btn mobile-menu-close" id="mobileClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <a href="#/shop">Shop</a>
+  <a href="#/wardrobe">Wardrobe</a>
+  <a href="#/private">Private Collection</a>
+  <a href="#/journal">Journal</a>
+  <a href="#/about">About Gloria</a>
+</div>
+
+<!-- ============ HOME VIEW ============ -->
+<main id="app">
+<section class="view" id="view-home">
+
+  <div class="hero">
+    <div class="gold-dust" id="goldDust"></div>
+    <div class="hero-grid">
+      <div class="hero-copy on-dark">
+        <span class="eyebrow">Luxury Jewelry · Fashion · Accessories</span>
+        <h1 class="hero-title">Wealth looks<br>better <em>in feathers.</em></h1>
+        <p class="hero-sub">Gloria Birdmoney has never understood the phrase &ldquo;too much.&rdquo; Fortunately, she has the fortune to afford it.</p>
+        <div class="hero-ctas">
+          <a href="#/shop" class="btn btn-gold">Shop the Collection</a>
+          <a href="#/about" class="btn btn-line">Meet Gloria</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <div class="hero-glow"></div>
+        <img src="gloria.png" alt="Gloria Birdmoney, an elegantly dressed bird in gold jewelry, a plum coat, and a purple velvet handbag" id="heroImg">
+      </div>
+    </div>
+    <div class="hero-scroll on-dark"><span class="line"></span>Scroll</div>
+  </div>
+
+  <!-- STORY -->
+  <section class="section on-dark story">
+    <div class="wrap story-grid">
+      <div class="reveal">
+        <div class="story-portrait">
+          <img src="gloria.png" alt="Gloria Birdmoney portrait">
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">The House of Birdmoney</span>
+        <p class="story-quote serif">&ldquo;Darling, you can&rsquo;t possibly leave without looking at the earrings.&rdquo;</p>
+        <div class="story-body">
+          <p>Gloria Birdmoney was not born wealthy. She simply arrived that way, and has spent every year since refusing to explain the difference.</p>
+          <p>Somewhere between three continents and one very contested inheritance, Gloria assembled a personal archive of jewelry, fashion, and rare objects that eventually outgrew her closets, then her manor, then the concept of a closet entirely. What began as acquisition became philosophy: nothing in the Birdmoney collection is bought because it is needed. Everything is bought because it is correct.</p>
+        </div>
+        <div class="story-facts">
+          <div><div class="num">20+</div><div class="label">Years Collecting</div></div>
+          <div><div class="num">12</div><div class="label">Signature Pieces</div></div>
+          <div><div class="num">0</div><div class="label">Regrets, Reportedly</div></div>
+        </div>
+        <a href="#/about" class="btn btn-line" style="margin-top:36px;">Read Her Full Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP TEASER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Collection</span>
+        <h2>Objects Gloria considers essential.</h2>
+        <p class="lede">A working selection from the house archive — jewelry, fashion, and accessories, each approved personally and reluctantly by Gloria herself.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="grid" id="homeGrid"></div>
+      <div class="section-foot"><a href="#/shop" class="btn btn-dark">View Full Collection</a></div>
+    </div>
+  </section>
+
+  <!-- WARDROBE TEASER -->
+  <section class="section on-dark" style="padding-bottom:100px;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Gloria&rsquo;s Wardrobe</span>
+        <h2>Dressed for rooms she wasn&rsquo;t invited to.</h2>
+        <p class="lede">A running editorial of Gloria&rsquo;s looks — outfits, stacking rules, and the occasional indoor sunglasses.</p>
+      </div>
+    </div>
+    <div class="wrap"><div class="looks" id="homeLooks"></div></div>
+    <div class="wrap"><div class="section-foot"><a href="#/wardrobe" class="btn btn-line">Enter the Wardrobe</a></div></div>
+  </section>
+
+  <!-- PRIVATE TEASER -->
+  <section class="section plum">
+    <div class="wrap" style="text-align:center;">
+      <div class="reveal" style="max-width:600px; margin:0 auto;">
+        <span class="eyebrow" style="color:var(--gold-light)">The Private Collection</span>
+        <h2 style="margin-top:16px; font-size:clamp(1.9rem,4vw,2.8rem);">Not everything Gloria owns is for sale.</h2>
+        <p class="dialogue" style="margin-top:18px; font-size:1.2rem;">Fortunately, she occasionally changes her mind.</p>
+        <a href="#/private" class="btn btn-gold" style="margin-top:34px;">Request an Introduction</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNAL TEASER -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Gloria&rsquo;s Journal</span>
+        <h2>Field notes from a life of excess.</h2>
+      </div>
+      <div class="journal-list" id="homeJournal"></div>
+      <div class="section-foot"><a href="#/journal" class="btn btn-dark">Read the Journal</a></div>
+    </div>
+  </section>
+
+</section>
+
+<!-- ============ SHOP VIEW ============ -->
+<section class="view" id="view-shop">
+  <div class="wrap page-hero">
+    <span class="crumb"><a href="#/home">Home</a> / Shop</span>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);">The Full Collection</h1>
+    <p class="lede" style="margin-top:16px;">Jewelry, fashion, and accessories, arranged the way Gloria arranges everything: by what catches the light first.</p>
+  </div>
+  <div class="wrap">
+    <div class="filter-bar">
+      <div class="filter-pills" id="filterPills"></div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+  </div>
+  <div class="wrap"><div class="grid" id="shopGrid"></div></div>
+  <div style="height:100px"></div>
+</section>
+
+<!-- ============ PRODUCT DETAIL VIEW ============ -->
+<section class="view" id="view-product">
+  <div class="wrap page-hero" style="padding-bottom:0;">
+    <span class="crumb" id="pdCrumb"></span>
+  </div>
+  <div class="wrap" style="padding-bottom:120px;">
+    <div class="pd" id="pdWrap"></div>
+  </div>
+</section>
+
+<!-- ============ WARDROBE VIEW ============ -->
+<section class="view" id="view-wardrobe">
+  <div class="wrap page-hero" style="background:var(--black);">
+  </div>
+  <div class="section on-dark" style="padding-top:0;">
+    <div class="wrap">
+      <span class="crumb" style="opacity:0.5;"><a href="#/home">Home</a> / Wardrobe</span>
+      <div class="section-head" style="margin-bottom:64px;">
+        <span class="eyebrow">Gloria&rsquo;s Wardrobe</span>
+        <h2>A digital fashion editorial.</h2>
+        <p class="lede">Gloria does not repeat outfits, but she does repeat opinions. These are her current rotations.</p>
+      </div>
+      <div class="looks" id="wardrobeLooks"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVATE COLLECTION VIEW ============ -->
+<section class="view" id="view-private">
+  <div class="section on-dark" style="background:var(--black);">
+    <div class="wrap">
+      <span class="crumb" style="opacity:0.5;"><a href="#/home">Home</a> / Private Collection</span>
+      <div class="private-hero">
+        <span class="eyebrow">By Invitation, Mostly</span>
+        <h2>The Private Collection</h2>
+        <div class="divider" style="background:var(--gold-light);"></div>
+        <p>A small, rotating archive of limited pieces Gloria is not obligated to sell you. Prices reflect that. So does the waiting list.</p>
+      </div>
+      <div class="grid on-dark" id="privateGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNAL LIST VIEW ============ -->
+<section class="view" id="view-journal">
+  <div class="wrap page-hero">
+    <span class="crumb"><a href="#/home">Home</a> / Journal</span>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);">Gloria&rsquo;s Journal</h1>
+    <p class="lede" style="margin-top:16px;">Notes, opinions, and the occasional confession, published whenever Gloria feels like it.</p>
+  </div>
+  <div class="wrap"><div class="journal-list" id="journalList"></div></div>
+  <div style="height:100px"></div>
+</section>
+
+<!-- ============ ARTICLE VIEW ============ -->
+<section class="view" id="view-article">
+  <div class="wrap page-hero" style="padding-bottom:120px;">
+    <div class="article" id="articleWrap"></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT VIEW ============ -->
+<section class="view" id="view-about">
+  <div class="section on-dark" style="background:var(--black); padding-top:150px;">
+    <div class="wrap story-grid">
+      <div>
+        <div class="story-portrait" style="aspect-ratio:3/4;">
+          <img src="gloria.png" alt="Gloria Birdmoney full portrait">
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">About the House</span>
+        <h1 style="font-size:clamp(2rem,4vw,3rem); margin-top:14px;">Gloria Birdmoney</h1>
+        <p class="story-quote serif">&ldquo;Yes, they&rsquo;re expensive. No, I don&rsquo;t see the problem.&rdquo;</p>
+        <div class="story-body">
+          <p>Gloria Birdmoney is, by her own account, &ldquo;a woman of considerable and largely self-explanatory means.&rdquo; She has spent more than two decades collecting jewelry, fashion, accessories, and objects she describes only as &ldquo;important,&rdquo; assembling a personal archive that eventually became a business, mostly by accident.</p>
+          <p>She favors gold that has clearly been worked by hand, pearls that refuse to be perfectly round, and velvet in colors that do not appear on standard swatches. She dislikes the word &ldquo;trend,&rdquo; the concept of &ldquo;one nice piece,&rdquo; and being kept waiting.</p>
+          <p>Gloria maintains residences she declines to name and a wardrobe she declines to count. She is, by all accounts, difficult to buy for &mdash; which is precisely why she started selling instead.</p>
+        </div>
+        <a href="#/shop" class="btn btn-gold" style="margin-top:30px;">Shop Gloria&rsquo;s Collection</a>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">The QuarkForce Universe</span>
+      <h2 style="margin-top:16px; max-width:600px; margin-left:auto; margin-right:auto;">Gloria Birdmoney is a character from the QuarkForce Universe.</h2>
+      <p class="lede" style="margin:22px auto 0; text-align:center;">A visual art universe of original characters, murals, zines, and live events — Gloria is one resident among many.</p>
+      <a href="https://quarkforce.example" class="qf-link" style="margin-top:32px; display:inline-flex;">Explore the QuarkForce Universe</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="scrim" id="scrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Bag</h3>
+    <button class="icon-btn" id="cartClose" aria-label="Close cart">
+      <svg class="close-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-line"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+    <div class="cart-line" style="opacity:0.6; font-size:0.82rem;"><span>Shipping &amp; taxes</span><span>Calculated at checkout</span></div>
+    <div class="cart-line total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-fill-dark" id="checkoutBtn">Proceed to Checkout</button>
+    <p class="cart-note">This is a demo storefront. Checkout is not yet connected to a live payment processor &mdash; Gloria is very particular about who handles her money.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="nav-mark">GLORIA <span style="color:var(--gold-light)">B.</span></div>
+        <p>An exquisite collection for an exquisite bird. Luxury jewelry, fashion, and accessories from the house of Birdmoney.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <a href="#/shop">Jewelry</a>
+        <a href="#/shop">Fashion</a>
+        <a href="#/shop">Accessories</a>
+        <a href="#/private">Private Collection</a>
+      </div>
+      <div class="foot-col">
+        <h5>The House</h5>
+        <a href="#/about">About Gloria</a>
+        <a href="#/wardrobe">Wardrobe</a>
+        <a href="#/journal">Journal</a>
+      </div>
+      <div class="foot-col">
+        <h5>Client Care</h5>
+        <a href="#/journal">Contact</a>
+        <a href="#/journal">Shipping</a>
+        <a href="#/journal">Returns</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <a href="https://quarkforce.example" class="qf-link">Gloria Birdmoney is a character from the QuarkForce Universe — Explore the Universe</a>
+      <span class="copy">&copy; <span id="year"></span> Gloria Birdmoney. A fictional house of the QuarkForce Universe.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   GLORIA BIRDMONEY — front-end storefront
+   Vanilla JS, hash-based router, in-memory cart state.
+   ============================================================ */
+
+/* ---------- PRODUCT DATA ---------- */
+const PRODUCTS = [
+  { id:"gold-chain", name:"Birdmoney Gold Chain", category:"Jewelry", price:2400,
+    tagline:"Heavy is a compliment.",
+    desc:"A hand-linked chain in antiqued gold vermeil, substantial enough to announce itself before Gloria enters a room.",
+    material:"18k gold vermeil over sterling silver", optionLabel:"Length", options:["16\"","20\"","24\""],
+    story:"Gloria commissioned this chain after deciding her previous three were \u201cacceptable, but not conversational.\u201d",
+    tone:"gold" },
+  { id:"feather-earrings", name:"Golden Feather Earrings", category:"Jewelry", price:980,
+    tagline:"Light as a feather. Priced like one isn\u2019t.",
+    desc:"Sculpted gold feather drops that catch the light the way Gloria catches attention \u2014 immediately, and on purpose.",
+    material:"22k gold plate, hand-hammered finish", optionLabel:"Size", options:["Petite","Statement"],
+    story:"Modeled after a single tail feather Gloria insisted was \u201cthe good one.\u201d",
+    tone:"gold" },
+  { id:"statement-necklace", name:"Birdmoney Statement Necklace", category:"Jewelry", price:4200,
+    tagline:"Subtlety was never the assignment.",
+    desc:"Tiered gold beadwork built to sit exactly where the eye lands first. Gloria wears it to rooms she has not been invited to.",
+    material:"Gold-washed brass, hand-strung", optionLabel:"Style", options:["Single strand","Triple strand"],
+    story:"Gloria personally rejected seventeen prototypes before approving this one.",
+    tone:"gold" },
+  { id:"signature-bracelet", name:"Gloria\u2019s Signature Bracelet", category:"Jewelry", price:1150,
+    tagline:"Her name, technically, nowhere on it.",
+    desc:"A chunky link bracelet finished in the same antique gold as the chain \u2014 designed to be worn stacked or alone. Gloria wears three.",
+    material:"18k gold vermeil", optionLabel:"Size", options:["S","M","L"],
+    story:"The clasp took four jewelers and one very stern letter to get right.",
+    tone:"gold" },
+  { id:"pearl-collection", name:"Gloria\u2019s Pearl Collection", category:"Jewelry", price:3300,
+    tagline:"Traditional, on her terms.",
+    desc:"Freshwater pearls in irregular baroque shapes, strung the way Gloria insists pearls should be worn: imperfectly, and often.",
+    material:"Baroque freshwater pearl, gold-filled clasp", optionLabel:"Length", options:["Choker","Opera length"],
+    story:"Gloria refuses to call these \u201cclassic.\u201d She calls them \u201ccorrect.\u201d",
+    tone:"pearl" },
+  { id:"couture-jacket", name:"Birdmoney Couture Jacket", category:"Fashion", price:3600,
+    tagline:"Structured for a woman who does not slouch.",
+    desc:"A sharply tailored jacket in deep plum wool, feather-trimmed at the collar in a nod to the house silhouette.",
+    material:"Wool blend, hand-finished feather trim", optionLabel:"Size", options:["XS","S","M","L","XL"],
+    story:"The trim is trimmed by hand. Gloria has opinions about machine feathers.",
+    tone:"plum" },
+  { id:"velvet-bag", name:"Purple Velvet Birdmoney Bag", category:"Fashion", price:2950,
+    tagline:"Big enough for essentials. Hers, specifically.",
+    desc:"A structured velvet top-handle bag in deep plum, finished with an antique brass clasp Gloria refers to as \u201cthe good hardware.\u201d",
+    material:"Cotton velvet, brass hardware", optionLabel:"Size", options:["One size"],
+    story:"Gloria has never once put anything practical inside it.",
+    tone:"plum" },
+  { id:"sunglasses", name:"Wealthy Bird Sunglasses", category:"Accessories", price:640,
+    tagline:"For looking, and for being looked at.",
+    desc:"Oversized frames in warm tortoise acetate, designed for a woman who considers eye contact optional.",
+    material:"Acetate, UV400 lenses", optionLabel:"Size", options:["One size"],
+    story:"Gloria wears these indoors. She has never explained why. No one has asked twice.",
+    tone:"ivory" },
+  { id:"feather-brooch", name:"Couture Feather Brooch", category:"Accessories", price:1320,
+    tagline:"One small statement. Still a statement.",
+    desc:"A sculpted brooch in gold and dusty rose enamel, pinned wherever Gloria feels a look needs \u201cone more thing.\u201d",
+    material:"Gold-plated brass, enamel", optionLabel:"Size", options:["One size"],
+    story:"Reserved for outfits Gloria considers \u201calmost finished.\u201d",
+    tone:"gold" },
+  { id:"golden-egg", name:"Golden Egg Pendant", category:"Accessories", price:1890,
+    tagline:"A nest egg, worn literally.",
+    desc:"A solid gold egg pendant on a fine box chain \u2014 Gloria\u2019s answer to \u201cdiversify your assets.\u201d",
+    material:"18k gold vermeil, 18\" chain", optionLabel:"Size", options:["One size"],
+    story:"Gloria calls it a metaphor. Her accountant calls it a write-off.",
+    tone:"gold" },
+  { id:"feather-crown", name:"Limited Edition Feather Crown", category:"Private Collection", price:5100,
+    tagline:"Not a hat. A position.",
+    desc:"A hand-built crown of dyed feathers and gold filigree, produced in a run of twelve. Gloria owns the first and the last.",
+    material:"Genuine feather, gold filigree wire", optionLabel:"Fit", options:["One size, fitted"],
+    story:"Ten remain. Gloria is not telling anyone which ten.",
+    tone:"plum" },
+  { id:"private-reserve", name:"Gloria\u2019s Private Reserve", category:"Private Collection", price:12000,
+    tagline:"Not everything Gloria owns is for sale.",
+    desc:"A rotating selection from Gloria\u2019s personal archive. Availability changes without notice, explanation, or apology.",
+    material:"Varies by release", optionLabel:"Availability", options:["Inquire for current piece"],
+    story:"Fortunately, she occasionally changes her mind.",
+    tone:"black" },
+];
+
+const CATEGORIES = ["All","Jewelry","Fashion","Accessories","Private Collection"];
+
+/* ---------- WARDROBE LOOKS ---------- */
+const LOOKS = [
+  { no:"Look 01", title:"Manor Morning", desc:"Sunglasses indoors, pearls before nine, and a bathrobe she insists is \u201ccouture leisurewear.\u201d",
+    items:["pearl-collection","sunglasses"] },
+  { no:"Look 02", title:"Board Meeting, Allegedly", desc:"The jacket, the chain, and the necklace \u2014 for meetings Gloria has scheduled but not confirmed she\u2019ll attend.",
+    items:["couture-jacket","gold-chain","statement-necklace"] },
+  { no:"Look 03", title:"After Five", desc:"The velvet bag, the brooch, and earrings chosen specifically to catch candlelight.",
+    items:["velvet-bag","feather-brooch","feather-earrings"] },
+  { no:"Look 04", title:"Full Plumage", desc:"Every gold piece she owns, worn at once, for occasions that do not require this level of commitment.",
+    items:["feather-crown","signature-bracelet","gold-chain","golden-egg"] },
+];
+
+/* ---------- JOURNAL ---------- */
+const ARTICLES = [
+  { slug:"how-much-gold", cat:"Opinion", title:"How Much Gold Is Too Much Gold?",
+    body:[
+      "Gloria gets this question often, usually from people wearing significantly less gold than she is.",
+      "The honest answer: there is no such thing as too much gold, only gold that has been chosen without conviction. A single thin chain, worn apologetically, reads as less than nothing. A full stack, worn without explanation, reads as a decision.",
+      "Gloria\u2019s rule is simple. If you find yourself justifying a piece, it is the wrong piece. If you find yourself justifying the whole collection, you are finally getting somewhere."
+    ], quote:"\u201cThe only tasteful amount of gold is more than the room expects.\u201d" },
+  { slug:"looking-expensive", cat:"Guide", title:"Gloria\u2019s Guide to Looking Expensive",
+    body:[
+      "Looking expensive, Gloria will tell you, has very little to do with money and a great deal to do with posture, pacing, and the refusal to explain yourself.",
+      "Buy fewer things, but insist on the ones that are handmade, slightly irregular, and clearly considered. Wear color like you meant it. Never rush toward a door. And when someone compliments an accessory, simply say \u201cthank you\u201d and let the silence do the rest of the work.",
+      "Everything else is optional."
+    ], quote:"\u201cYes, they\u2019re expensive. No, I don\u2019t see the problem.\u201d" },
+  { slug:"five-things", cat:"Guide", title:"Five Things Every Bird Should Own",
+    body:[
+      "One necklace that requires no other jewelry. One bag that has never once been asked to be practical.",
+      "One coat with a collar dramatic enough to end a conversation. One pair of sunglasses worn regardless of weather, lighting, or social context.",
+      "And one piece, kept in a drawer and shown to almost no one, that exists purely because Gloria wanted it and offered no further reasoning."
+    ], quote:"\u201cA well-dressed bird owns very little. All of it, however, is correct.\u201d" },
+  { slug:"ordinary-jewelry", cat:"Opinion", title:"Why Gloria Refuses to Wear Ordinary Jewelry",
+    body:[
+      "\u201cOrdinary,\u201d Gloria says, \u201cis a decision, not an accident.\u201d She does not object to simplicity. She objects to jewelry that seems to apologize for existing.",
+      "Every piece in the Birdmoney collection is hand-finished, slightly imperfect, and impossible to mistake for anyone else\u2019s. That, to Gloria, is the entire point of owning things at all: not to blend in, but to be identifiable from across a very large room."
+    ], quote:"\u201cIf it doesn\u2019t announce itself, it isn\u2019t mine.\u201d" },
+  { slug:"inside-closet", cat:"Behind the House", title:"Inside Gloria\u2019s Closet",
+    body:[
+      "Gloria\u2019s closet is organized by mood, not season \u2014 a system she describes as \u201cintuitive\u201d and everyone else describes as \u201cimpossible to navigate.\u201d",
+      "There is a wall for gold. A wall for plum. A single, heavily guarded shelf for the Private Collection, which Gloria opens for almost no one and photographs for even fewer.",
+      "What visitors notice first is not the volume, but the care \u2014 every piece hung, boxed, or cushioned as though it might be worn again within the hour. In Gloria\u2019s world, it usually is."
+    ], quote:"\u201cA closet is a confession. Mine simply confesses expensively.\u201d" },
+  { slug:"afternoon-manor", cat:"Behind the House", title:"An Afternoon at Birdmoney Manor",
+    body:[
+      "Tea is served at four, always slightly late, because Gloria considers punctuality \u201ca quality for people with less to attend to.\u201d",
+      "The afternoon typically involves at least one outfit change, one unsolicited opinion about a guest\u2019s earrings, and one new piece produced from somewhere and presented without context.",
+      "By evening, nothing has been decided, several things have been admired, and Gloria has once again managed to make an ordinary Tuesday feel like an occasion."
+    ], quote:"\u201cI don\u2019t host afternoons. I host events that happen to occur in the afternoon.\u201d" },
+];
+
+/* ---------- STATE ---------- */
+let cart = []; // {id, qty, option}
+let selectedOptions = {}; // per product id, current pd view selection
+
+const byId = id => PRODUCTS.find(p => p.id === id);
+const fmt = n => "$" + n.toLocaleString("en-US");
+
+/* ---------- CARD RENDERING ---------- */
+function productCard(p){
+  return `
+  <div class="card" data-id="${p.id}" onclick="if(!event.target.closest('button')) navigate('/product/${p.id}')">
+    <div class="card-art tone-${p.tone}">
+      <span class="cat-tag">${p.category}</span>
+      <span class="mono">GB</span>
+    </div>
+    <div class="card-info">
+      <div class="cname">${p.name}</div>
+      <div class="ctag">${p.tagline}</div>
+      <div class="cprice">${fmt(p.price)}</div>
+      <div class="card-actions">
+        <button onclick="navigate('/product/${p.id}')">View Details</button>
+        <button class="add" onclick="quickAdd('${p.id}')">Add to Bag</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderGrid(el, list){
+  el.innerHTML = list.map(productCard).join("");
+}
+
+/* ---------- LOOKS ---------- */
+function lookCard(l){
+  return `
+  <div class="look">
+    <span class="look-no">${l.no}</span>
+    <h3>${l.title}</h3>
+    <p>${l.desc}</p>
+    <div class="look-items">
+      ${l.items.map(id => `<span onclick="navigate('/product/${id}')">${byId(id).name}</span>`).join("")}
+    </div>
+  </div>`;
+}
+
+/* ---------- JOURNAL LIST ROW ---------- */
+function journalRow(a, i){
+  return `
+  <div class="j-row" onclick="navigate('/journal/${a.slug}')">
+    <span class="j-no">${String(i+1).padStart(2,"0")}</span>
+    <div>
+      <h3>${a.title}</h3>
+      <span class="j-cat">${a.cat}</span>
+    </div>
+    <span style="font-size:0.75rem; opacity:0.5; letter-spacing:0.06em; text-transform:uppercase;">Read &rarr;</span>
+  </div>`;
+}
+
+/* ---------- INITIAL STATIC RENDERS ---------- */
+document.getElementById("homeGrid").innerHTML = PRODUCTS.slice(0,4).map(productCard).join("");
+document.getElementById("homeLooks").innerHTML = LOOKS.slice(0,2).map(lookCard).join("");
+document.getElementById("homeJournal").innerHTML = ARTICLES.slice(0,3).map(journalRow).join("");
+document.getElementById("wardrobeLooks").innerHTML = LOOKS.map(lookCard).join("");
+document.getElementById("privateGrid").innerHTML = PRODUCTS.filter(p=>p.category==="Private Collection").map(productCard).join("");
+document.getElementById("journalList").innerHTML = ARTICLES.map(journalRow).join("");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---------- SHOP FILTER ---------- */
+let activeCat = "All";
+function renderFilterBar(){
+  const pillsEl = document.getElementById("filterPills");
+  pillsEl.innerHTML = CATEGORIES.map(c =>
+    `<button class="pill ${c===activeCat?'active':''}" onclick="setFilter('${c}')">${c}</button>`
+  ).join("");
+}
+function setFilter(cat){
+  activeCat = cat;
+  renderFilterBar();
+  const list = cat === "All" ? PRODUCTS : PRODUCTS.filter(p => p.category === cat);
+  renderGrid(document.getElementById("shopGrid"), list);
+  document.getElementById("resultCount").textContent = list.length + (list.length===1 ? " piece" : " pieces");
+}
+
+/* ---------- PRODUCT DETAIL ---------- */
+function renderProduct(id){
+  const p = byId(id);
+  if(!p){ navigate("/shop"); return; }
+  if(!selectedOptions[id]) selectedOptions[id] = p.options[0];
+  document.getElementById("pdCrumb").innerHTML = `<a href="#/shop">Shop</a> / <a href="#/shop">${p.category}</a> / ${p.name}`;
+
+  const cartQtyKey = id + "::" + selectedOptions[id];
+  document.getElementById("pdWrap").innerHTML = `
+    <div class="pd-art tone-${p.tone}"><span class="mono">GB</span></div>
+    <div class="pd-info">
+      <span class="eyebrow">${p.category}</span>
+      <h1>${p.name}</h1>
+      <p class="pd-tagline">${p.tagline}</p>
+      <div class="pd-price">${fmt(p.price)}</div>
+      <p class="pd-desc">${p.desc}</p>
+
+      <div class="pd-row">
+        <label>${p.optionLabel}</label>
+        <div class="opt-group" id="optGroup">
+          ${p.options.map(o => `<button class="opt ${o===selectedOptions[id]?'sel':''}" onclick="selectOption('${id}','${o.replace(/'/g,"\\'")}')">${o}</button>`).join("")}
+        </div>
+      </div>
+
+      <div class="pd-row">
+        <label>Quantity</label>
+        <div class="qty-row">
+          <div class="qty-box">
+            <button onclick="changePdQty(-1)">&minus;</button>
+            <span id="pdQty">1</span>
+            <button onclick="changePdQty(1)">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pd-ctas">
+        <button class="btn btn-fill-dark" onclick="addFromDetail('${id}')">Add to Bag</button>
+        <button class="btn btn-dark" id="wishBtn" onclick="toggleWish(this)">&hearts; Add to Wishlist</button>
+      </div>
+
+      <div class="pd-story serif">&ldquo;${p.story}&rdquo;</div>
+
+      <div class="pd-meta">
+        <span><strong>Material:</strong> ${p.material}</span>
+      </div>
+    </div>
+  `;
+}
+let pdQty = 1;
+function changePdQty(d){
+  pdQty = Math.max(1, pdQty + d);
+  document.getElementById("pdQty").textContent = pdQty;
+}
+function selectOption(id, opt){
+  selectedOptions[id] = opt;
+  renderProduct(id);
+}
+function toggleWish(btn){
+  const active = btn.classList.toggle("wished");
+  btn.innerHTML = active ? "&hearts; Saved to Wishlist" : "&hearts; Add to Wishlist";
+  showToast(active ? "Added to wishlist" : "Removed from wishlist");
+}
+function addFromDetail(id){
+  addToCart(id, selectedOptions[id], pdQty);
+  pdQty = 1;
+}
+
+/* ---------- CART LOGIC ---------- */
+function quickAdd(id){
+  const p = byId(id);
+  addToCart(id, p.options[0], 1);
+}
+function addToCart(id, option, qty){
+  const existing = cart.find(c => c.id === id && c.option === option);
+  if(existing){ existing.qty += qty; }
+  else{ cart.push({id, option, qty}); }
+  renderCart();
+  openCart();
+  showToast("Added to bag \u2014 Gloria approves.");
+}
+function removeFromCart(id, option){
+  cart = cart.filter(c => !(c.id === id && c.option === option));
+  renderCart();
+}
+function changeCartQty(id, option, d){
+  const item = cart.find(c => c.id === id && c.option === option);
+  if(!item) return;
+  item.qty = Math.max(1, item.qty + d);
+  renderCart();
+}
+function renderCart(){
+  const el = document.getElementById("cartItems");
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById("cartCount").textContent = count;
+  if(cart.length === 0){
+    el.innerHTML = `<div class="cart-empty">Your bag is empty.<br>Gloria finds that unlikely to last.</div>`;
+  } else {
+    el.innerHTML = cart.map(c => {
+      const p = byId(c.id);
+      return `
+      <div class="cart-item">
+        <div class="ci-art tone-${p.tone}"><span class="mono">GB</span></div>
+        <div>
+          <h4>${p.name}</h4>
+          <div class="ci-opt">${c.option}</div>
+          <div class="ci-price">${fmt(p.price * c.qty)}</div>
+          <div class="ci-controls">
+            <div class="qty-box">
+              <button onclick="changeCartQty('${c.id}','${c.option.replace(/'/g,"\\'")}',-1)">&minus;</button>
+              <span>${c.qty}</span>
+              <button onclick="changeCartQty('${c.id}','${c.option.replace(/'/g,"\\'")}',1)">+</button>
+            </div>
+            <button class="ci-remove" onclick="removeFromCart('${c.id}','${c.option.replace(/'/g,"\\'")}')">Remove</button>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+  const subtotal = cart.reduce((s,c)=> s + byId(c.id).price * c.qty, 0);
+  document.getElementById("cartSubtotal").textContent = fmt(subtotal);
+  document.getElementById("cartTotal").textContent = fmt(subtotal);
+  document.getElementById("checkoutBtn").disabled = cart.length === 0;
+}
+function openCart(){ document.getElementById("cartDrawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
+function closeCart(){ document.getElementById("cartDrawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
+document.getElementById("cartBtn").onclick = openCart;
+document.getElementById("cartClose").onclick = closeCart;
+document.getElementById("scrim").onclick = closeCart;
+document.getElementById("checkoutBtn").onclick = () => {
+  if(cart.length===0) return;
+  showToast("Checkout is a demo \u2014 Gloria\u2019s accountant is still setting up payments.");
+};
+
+/* ---------- TOAST ---------- */
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove("show"), 2600);
+}
+
+/* ---------- ARTICLE ---------- */
+function renderArticle(slug){
+  const a = ARTICLES.find(x => x.slug === slug);
+  if(!a){ navigate("/journal"); return; }
+  document.getElementById("articleWrap").innerHTML = `
+    <a href="#/journal" class="back-link">&larr; Back to Journal</a>
+    <span class="eyebrow">${a.cat}</span>
+    <h1>${a.title}</h1>
+    ${a.body.map(p => `<p>${p}</p>`).join("")}
+    <span class="dialogue">${a.quote}</span>
+  `;
+}
+
+/* ---------- MOBILE MENU ---------- */
+const mobileMenu = document.getElementById("mobileMenu");
+document.getElementById("burgerBtn").onclick = () => mobileMenu.classList.add("open");
+document.getElementById("mobileClose").onclick = () => mobileMenu.classList.remove("open");
+mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", ()=> mobileMenu.classList.remove("open")));
+
+/* ---------- NAV SCROLL STATE ---------- */
+const navEl = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  navEl.classList.toggle("scrolled", window.scrollY > 40);
+}, {passive:true});
+
+/* ---------- GOLD DUST PARTICLES (hero, one orchestrated ambient moment) ---------- */
+(function initDust(){
+  const holder = document.getElementById("goldDust");
+  const count = window.innerWidth < 700 ? 10 : 18;
+  for(let i=0;i<count;i++){
+    const s = document.createElement("span");
+    s.style.left = (Math.random()*100) + "%";
+    s.style.setProperty("--drift", (Math.random()*60-30) + "px");
+    s.style.animationDuration = (7 + Math.random()*7) + "s";
+    s.style.animationDelay = (Math.random()*10) + "s";
+    s.style.opacity = 0.3 + Math.random()*0.5;
+    holder.appendChild(s);
+  }
+})();
+
+/* gentle parallax on hero image */
+window.addEventListener("scroll", () => {
+  const img = document.getElementById("heroImg");
+  if(!img) return;
+  const y = Math.min(window.scrollY, 500);
+  img.style.transform = `translateY(${y*0.12}px)`;
+}, {passive:true});
+
+/* ---------- SCROLL REVEAL ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("in"); });
+}, {threshold:0.15});
+function armReveals(){
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+}
+
+/* ============ ROUTER ============ */
+const views = {
+  home: document.getElementById("view-home"),
+  shop: document.getElementById("view-shop"),
+  product: document.getElementById("view-product"),
+  wardrobe: document.getElementById("view-wardrobe"),
+  private: document.getElementById("view-private"),
+  journal: document.getElementById("view-journal"),
+  article: document.getElementById("view-article"),
+  about: document.getElementById("view-about"),
+};
+function navigate(path){ window.location.hash = "#" + path; }
+
+function router(){
+  const hash = window.location.hash.replace(/^#/, "") || "/home";
+  const parts = hash.split("/").filter(Boolean); // e.g. ["product","gold-chain"]
+  const root = parts[0] || "home";
+
+  Object.values(views).forEach(v => v.classList.remove("active"));
+  document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => a.classList.remove("active"));
+
+  if(root === "product" && parts[1]){
+    views.product.classList.add("active");
+    renderProduct(parts[1]);
+  } else if(root === "journal" && parts[1]){
+    views.article.classList.add("active");
+    renderArticle(parts[1]);
+  } else if(root === "shop"){
+    views.shop.classList.add("active");
+    renderFilterBar();
+    setFilter(activeCat);
+    document.querySelector(`.nav-links a[data-link="shop"]`)?.classList.add("active");
+  } else if(views[root]){
+    views[root].classList.add("active");
+    document.querySelector(`.nav-links a[data-link="${root}"]`)?.classList.add("active");
+  } else {
+    views.home.classList.add("active");
+  }
+
+  window.scrollTo({top:0, behavior:"instant" in document.documentElement.style ? "instant" : "auto"});
+  setTimeout(armReveals, 50);
+}
+window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", () => { renderCart(); router(); armReveals(); });
+</script>
+</body>
+</html>
