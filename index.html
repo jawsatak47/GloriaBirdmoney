@@ -102,16 +102,6 @@ p{margin:0;}
 .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
 .nav-links a.active{color:var(--ivory);}
 .nav-right{display:flex; align-items:center; gap:20px;}
-.icon-btn{
-  display:flex; align-items:center; gap:6px; color:var(--ivory); position:relative;
-  padding:6px;
-}
-.icon-btn svg{width:19px; height:19px;}
-.cart-count{
-  position:absolute; top:-4px; right:-4px; background:var(--gold); color:var(--black);
-  font-size:0.62rem; font-weight:700; width:16px; height:16px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-}
 .nav-burger{display:none;}
 @media (max-width:880px){
   .nav-links{display:none;}
@@ -158,7 +148,7 @@ p{margin:0;}
 
 .btn{
   font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;
-  padding:16px 30px; display:inline-flex; align-items:center; gap:10px;
+  padding:16px 30px; display:inline-flex; align-items:center; justify-content:center; gap:10px;
   transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
 }
 .btn-gold{background:var(--gold); color:var(--black);}
@@ -169,7 +159,6 @@ p{margin:0;}
 .btn-dark:hover{border-color:var(--gold); color:var(--gold-dim); transform:translateY(-2px);}
 .btn-fill-dark{background:var(--charcoal); color:var(--ivory);}
 .btn-fill-dark:hover{background:var(--black); transform:translateY(-2px);}
-.btn[disabled]{opacity:0.4; cursor:not-allowed; transform:none !important;}
 
 .hero-figure{
   position:relative; height:100%; display:flex; align-items:flex-end; justify-content:center;
@@ -276,15 +265,16 @@ p{margin:0;}
 .card-info .cprice{font-size:0.95rem; letter-spacing:0.02em; color:var(--gold-dim); font-weight:600; margin-bottom:14px;}
 .on-dark .card-info .cprice{color:var(--gold-light);}
 .card-actions{display:flex; gap:10px;}
-.card-actions button{
+.card-actions a, .card-actions button{
   flex:1; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; padding:11px 6px;
-  border:1px solid var(--line-dark); transition:all .3s var(--ease); white-space:nowrap;
+  border:1px solid var(--line-dark); transition:all .3s var(--ease); white-space:nowrap; text-align:center;
+  display:inline-flex; align-items:center; justify-content:center;
 }
-.on-dark .card-actions button{border-color:var(--line);}
+.on-dark .card-actions a, .on-dark .card-actions button{border-color:var(--line);}
 .card-actions button:hover{background:var(--charcoal); color:var(--ivory); border-color:var(--charcoal);}
 .on-dark .card-actions button:hover{background:var(--ivory); color:var(--black); border-color:var(--ivory);}
-.card-actions button.add{background:var(--gold); color:var(--black); border-color:var(--gold);}
-.card-actions button.add:hover{background:var(--gold-light); border-color:var(--gold-light); color:var(--black);}
+.card-actions a.square-btn{background:var(--gold); color:var(--black); border-color:var(--gold); font-weight:600;}
+.card-actions a.square-btn:hover{background:var(--gold-light); border-color:var(--gold-light); color:var(--black);}
 
 .section-foot{margin-top:48px; display:flex; justify-content:center;}
 
@@ -343,10 +333,6 @@ p{margin:0;}
   border:1px solid var(--line-dark); padding:10px 18px; font-size:0.82rem; transition:all .25s var(--ease);
 }
 .opt.sel{background:var(--charcoal); color:var(--ivory); border-color:var(--charcoal);}
-.qty-row{display:flex; align-items:center; gap:16px;}
-.qty-box{display:flex; align-items:center; border:1px solid var(--line-dark);}
-.qty-box button{padding:10px 16px; font-size:1rem;}
-.qty-box span{padding:0 14px; min-width:20px; text-align:center;}
 .pd-ctas{display:flex; gap:14px; margin:30px 0; flex-wrap:wrap;}
 .pd-story{
   margin-top:36px; padding:26px 28px; background:var(--pearl); border-left:2px solid var(--gold);
@@ -373,37 +359,6 @@ p{margin:0;}
 .back-link{display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:40px; color:var(--gold-dim);}
 .on-dark .back-link{color:var(--gold-light);}
 .back-link:hover{text-decoration:underline;}
-
-/* ============ ABOUT / MEET GLORIA anchor within story handled above ============ */
-
-/* ============ CART DRAWER ============ */
-.scrim{position:fixed; inset:0; background:rgba(16,12,13,0.6); z-index:400; opacity:0; pointer-events:none; transition:opacity .35s var(--ease);}
-.scrim.open{opacity:1; pointer-events:auto;}
-.cart-drawer{
-  position:fixed; top:0; right:0; bottom:0; width:min(440px,92vw); background:var(--ivory); z-index:401;
-  transform:translateX(100%); transition:transform .45s var(--ease); display:flex; flex-direction:column;
-  box-shadow:var(--shadow);
-}
-.cart-drawer.open{transform:translateX(0);}
-.cart-head{display:flex; align-items:center; justify-content:space-between; padding:26px 28px; border-bottom:1px solid var(--line-dark);}
-.cart-head h3{font-size:1.3rem;}
-.cart-items{flex:1; overflow-y:auto; padding:10px 28px;}
-.cart-item{display:grid; grid-template-columns:64px 1fr auto; gap:16px; padding:20px 0; border-bottom:1px solid var(--line-dark); align-items:center;}
-.cart-item .ci-art{width:64px; height:80px; border-radius:2px; display:flex; align-items:center; justify-content:center;}
-.cart-item .ci-art .mono{font-family:var(--serif); font-style:italic; font-size:1.4rem; color:rgba(244,239,229,0.6);}
-.cart-item h4{font-size:0.95rem; margin-bottom:4px;}
-.cart-item .ci-opt{font-size:0.75rem; opacity:0.55; margin-bottom:8px;}
-.cart-item .ci-price{font-size:0.85rem; font-weight:600;}
-.ci-controls{display:flex; align-items:center; gap:10px; margin-top:8px;}
-.ci-controls .qty-box{transform:scale(0.9); transform-origin:left;}
-.ci-remove{font-size:0.7rem; text-decoration:underline; opacity:0.55;}
-.cart-empty{padding:60px 0; text-align:center; opacity:0.6; font-size:0.95rem;}
-.cart-foot{padding:24px 28px 30px; border-top:1px solid var(--line-dark);}
-.cart-line{display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.92rem;}
-.cart-line.total{font-size:1.1rem; font-weight:600; margin-top:16px;}
-.cart-foot .btn{width:100%; justify-content:center; margin-top:16px;}
-.cart-note{font-size:0.72rem; opacity:0.5; margin-top:14px; line-height:1.5;}
-.close-x{width:20px; height:20px;}
 
 /* ============ FOOTER ============ */
 footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
@@ -451,10 +406,6 @@ footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
     <a href="#/about" data-link="about">About Gloria</a>
   </div>
   <div class="nav-right">
-    <button class="icon-btn" id="cartBtn" aria-label="Open cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8L4 7Z"/><path d="M8 7V5.5A4 4 0 0 1 12 1.5a4 4 0 0 1 4 4V7"/></svg>
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
     <button class="icon-btn nav-burger" id="burgerBtn" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -687,25 +638,6 @@ footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
 
 </main>
 
-<!-- ============ CART DRAWER ============ -->
-<div class="scrim" id="scrim"></div>
-<aside class="cart-drawer" id="cartDrawer">
-  <div class="cart-head">
-    <h3>Your Bag</h3>
-    <button class="icon-btn" id="cartClose" aria-label="Close cart">
-      <svg class="close-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="cart-foot">
-    <div class="cart-line"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
-    <div class="cart-line" style="opacity:0.6; font-size:0.82rem;"><span>Shipping &amp; taxes</span><span>Calculated at checkout</span></div>
-    <div class="cart-line total"><span>Total</span><span id="cartTotal">$0</span></div>
-    <button class="btn btn-fill-dark" id="checkoutBtn">Proceed to Checkout</button>
-    <p class="cart-note">This is a demo storefront. Checkout is not yet connected to a live payment processor &mdash; Gloria is very particular about who handles her money.</p>
-  </div>
-</aside>
-
 <div class="toast" id="toast"></div>
 
 <!-- ============ FOOTER ============ -->
@@ -746,78 +678,91 @@ footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
 <script>
 /* ============================================================
    GLORIA BIRDMONEY — front-end storefront
-   Vanilla JS, hash-based router, in-memory cart state.
+   Vanilla JS, hash-based router, Square direct links.
    ============================================================ */
 
 /* ---------- PRODUCT DATA ---------- */
+/* REPLACE squareLink VALUES WITH YOUR ACTUAL SQUARE PAY LINKS */
 const PRODUCTS = [
   { id:"gold-chain", name:"Birdmoney Gold Chain", category:"Jewelry", price:2400,
+    squareLink:"https://square.link/u/example-gold-chain",
     tagline:"Heavy is a compliment.",
     desc:"A hand-linked chain in antiqued gold vermeil, substantial enough to announce itself before Gloria enters a room.",
     material:"18k gold vermeil over sterling silver", optionLabel:"Length", options:["16\"","20\"","24\""],
     story:"Gloria commissioned this chain after deciding her previous three were \u201cacceptable, but not conversational.\u201d",
     tone:"gold" },
   { id:"feather-earrings", name:"Golden Feather Earrings", category:"Jewelry", price:980,
+    squareLink:"https://square.link/u/example-feather-earrings",
     tagline:"Light as a feather. Priced like one isn\u2019t.",
     desc:"Sculpted gold feather drops that catch the light the way Gloria catches attention \u2014 immediately, and on purpose.",
     material:"22k gold plate, hand-hammered finish", optionLabel:"Size", options:["Petite","Statement"],
     story:"Modeled after a single tail feather Gloria insisted was \u201cthe good one.\u201d",
     tone:"gold" },
   { id:"statement-necklace", name:"Birdmoney Statement Necklace", category:"Jewelry", price:4200,
+    squareLink:"https://square.link/u/example-statement-necklace",
     tagline:"Subtlety was never the assignment.",
     desc:"Tiered gold beadwork built to sit exactly where the eye lands first. Gloria wears it to rooms she has not been invited to.",
     material:"Gold-washed brass, hand-strung", optionLabel:"Style", options:["Single strand","Triple strand"],
     story:"Gloria personally rejected seventeen prototypes before approving this one.",
     tone:"gold" },
   { id:"signature-bracelet", name:"Gloria\u2019s Signature Bracelet", category:"Jewelry", price:1150,
+    squareLink:"https://square.link/u/example-signature-bracelet",
     tagline:"Her name, technically, nowhere on it.",
     desc:"A chunky link bracelet finished in the same antique gold as the chain \u2014 designed to be worn stacked or alone. Gloria wears three.",
     material:"18k gold vermeil", optionLabel:"Size", options:["S","M","L"],
     story:"The clasp took four jewelers and one very stern letter to get right.",
     tone:"gold" },
   { id:"pearl-collection", name:"Gloria\u2019s Pearl Collection", category:"Jewelry", price:3300,
+    squareLink:"https://square.link/u/example-pearl-collection",
     tagline:"Traditional, on her terms.",
     desc:"Freshwater pearls in irregular baroque shapes, strung the way Gloria insists pearls should be worn: imperfectly, and often.",
     material:"Baroque freshwater pearl, gold-filled clasp", optionLabel:"Length", options:["Choker","Opera length"],
     story:"Gloria refuses to call these \u201cclassic.\u201d She calls them \u201ccorrect.\u201d",
     tone:"pearl" },
   { id:"couture-jacket", name:"Birdmoney Couture Jacket", category:"Fashion", price:3600,
+    squareLink:"https://square.link/u/example-couture-jacket",
     tagline:"Structured for a woman who does not slouch.",
     desc:"A sharply tailored jacket in deep plum wool, feather-trimmed at the collar in a nod to the house silhouette.",
     material:"Wool blend, hand-finished feather trim", optionLabel:"Size", options:["XS","S","M","L","XL"],
     story:"The trim is trimmed by hand. Gloria has opinions about machine feathers.",
     tone:"plum" },
   { id:"velvet-bag", name:"Purple Velvet Birdmoney Bag", category:"Fashion", price:2950,
+    squareLink:"https://square.link/u/example-velvet-bag",
     tagline:"Big enough for essentials. Hers, specifically.",
     desc:"A structured velvet top-handle bag in deep plum, finished with an antique brass clasp Gloria refers to as \u201cthe good hardware.\u201d",
     material:"Cotton velvet, brass hardware", optionLabel:"Size", options:["One size"],
     story:"Gloria has never once put anything practical inside it.",
     tone:"plum" },
   { id:"sunglasses", name:"Wealthy Bird Sunglasses", category:"Accessories", price:640,
+    squareLink:"https://square.link/u/example-sunglasses",
     tagline:"For looking, and for being looked at.",
     desc:"Oversized frames in warm tortoise acetate, designed for a woman who considers eye contact optional.",
     material:"Acetate, UV400 lenses", optionLabel:"Size", options:["One size"],
     story:"Gloria wears these indoors. She has never explained why. No one has asked twice.",
     tone:"ivory" },
   { id:"feather-brooch", name:"Couture Feather Brooch", category:"Accessories", price:1320,
+    squareLink:"https://square.link/u/example-feather-brooch",
     tagline:"One small statement. Still a statement.",
     desc:"A sculpted brooch in gold and dusty rose enamel, pinned wherever Gloria feels a look needs \u201cone more thing.\u201d",
     material:"Gold-plated brass, enamel", optionLabel:"Size", options:["One size"],
     story:"Reserved for outfits Gloria considers \u201calmost finished.\u201d",
     tone:"gold" },
   { id:"golden-egg", name:"Golden Egg Pendant", category:"Accessories", price:1890,
+    squareLink:"https://square.link/u/example-golden-egg",
     tagline:"A nest egg, worn literally.",
     desc:"A solid gold egg pendant on a fine box chain \u2014 Gloria\u2019s answer to \u201cdiversify your assets.\u201d",
     material:"18k gold vermeil, 18\" chain", optionLabel:"Size", options:["One size"],
     story:"Gloria calls it a metaphor. Her accountant calls it a write-off.",
     tone:"gold" },
   { id:"feather-crown", name:"Limited Edition Feather Crown", category:"Private Collection", price:5100,
+    squareLink:"https://square.link/u/example-feather-crown",
     tagline:"Not a hat. A position.",
     desc:"A hand-built crown of dyed feathers and gold filigree, produced in a run of twelve. Gloria owns the first and the last.",
     material:"Genuine feather, gold filigree wire", optionLabel:"Fit", options:["One size, fitted"],
     story:"Ten remain. Gloria is not telling anyone which ten.",
     tone:"plum" },
   { id:"private-reserve", name:"Gloria\u2019s Private Reserve", category:"Private Collection", price:12000,
+    squareLink:"https://square.link/u/example-private-reserve",
     tagline:"Not everything Gloria owns is for sale.",
     desc:"A rotating selection from Gloria\u2019s personal archive. Availability changes without notice, explanation, or apology.",
     material:"Varies by release", optionLabel:"Availability", options:["Inquire for current piece"],
@@ -879,7 +824,6 @@ const ARTICLES = [
 ];
 
 /* ---------- STATE ---------- */
-let cart = []; // {id, qty, option}
 let selectedOptions = {}; // per product id, current pd view selection
 
 const byId = id => PRODUCTS.find(p => p.id === id);
@@ -888,7 +832,7 @@ const fmt = n => "$" + n.toLocaleString("en-US");
 /* ---------- CARD RENDERING ---------- */
 function productCard(p){
   return `
-  <div class="card" data-id="${p.id}" onclick="if(!event.target.closest('button')) navigate('/product/${p.id}')">
+  <div class="card" data-id="${p.id}" onclick="if(!event.target.closest('a') && !event.target.closest('button')) navigate('/product/${p.id}')">
     <div class="card-art tone-${p.tone}">
       <span class="cat-tag">${p.category}</span>
       <span class="mono">GB</span>
@@ -898,8 +842,8 @@ function productCard(p){
       <div class="ctag">${p.tagline}</div>
       <div class="cprice">${fmt(p.price)}</div>
       <div class="card-actions">
-        <button onclick="navigate('/product/${p.id}')">View Details</button>
-        <button class="add" onclick="quickAdd('${p.id}')">Add to Bag</button>
+        <button onclick="navigate('/product/${p.id}')">Details</button>
+        <a href="${p.squareLink}" target="_blank" rel="noopener noreferrer" class="square-btn">Buy Now</a>
       </div>
     </div>
   </div>`;
@@ -967,7 +911,6 @@ function renderProduct(id){
   if(!selectedOptions[id]) selectedOptions[id] = p.options[0];
   document.getElementById("pdCrumb").innerHTML = `<a href="#/shop">Shop</a> / <a href="#/shop">${p.category}</a> / ${p.name}`;
 
-  const cartQtyKey = id + "::" + selectedOptions[id];
   document.getElementById("pdWrap").innerHTML = `
     <div class="pd-art tone-${p.tone}"><span class="mono">GB</span></div>
     <div class="pd-info">
@@ -984,19 +927,8 @@ function renderProduct(id){
         </div>
       </div>
 
-      <div class="pd-row">
-        <label>Quantity</label>
-        <div class="qty-row">
-          <div class="qty-box">
-            <button onclick="changePdQty(-1)">&minus;</button>
-            <span id="pdQty">1</span>
-            <button onclick="changePdQty(1)">+</button>
-          </div>
-        </div>
-      </div>
-
       <div class="pd-ctas">
-        <button class="btn btn-fill-dark" onclick="addFromDetail('${id}')">Add to Bag</button>
+        <a href="${p.squareLink}" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="flex:1;">Buy via Square</a>
         <button class="btn btn-dark" id="wishBtn" onclick="toggleWish(this)">&hearts; Add to Wishlist</button>
       </div>
 
@@ -1008,11 +940,7 @@ function renderProduct(id){
     </div>
   `;
 }
-let pdQty = 1;
-function changePdQty(d){
-  pdQty = Math.max(1, pdQty + d);
-  document.getElementById("pdQty").textContent = pdQty;
-}
+
 function selectOption(id, opt){
   selectedOptions[id] = opt;
   renderProduct(id);
@@ -1022,76 +950,6 @@ function toggleWish(btn){
   btn.innerHTML = active ? "&hearts; Saved to Wishlist" : "&hearts; Add to Wishlist";
   showToast(active ? "Added to wishlist" : "Removed from wishlist");
 }
-function addFromDetail(id){
-  addToCart(id, selectedOptions[id], pdQty);
-  pdQty = 1;
-}
-
-/* ---------- CART LOGIC ---------- */
-function quickAdd(id){
-  const p = byId(id);
-  addToCart(id, p.options[0], 1);
-}
-function addToCart(id, option, qty){
-  const existing = cart.find(c => c.id === id && c.option === option);
-  if(existing){ existing.qty += qty; }
-  else{ cart.push({id, option, qty}); }
-  renderCart();
-  openCart();
-  showToast("Added to bag \u2014 Gloria approves.");
-}
-function removeFromCart(id, option){
-  cart = cart.filter(c => !(c.id === id && c.option === option));
-  renderCart();
-}
-function changeCartQty(id, option, d){
-  const item = cart.find(c => c.id === id && c.option === option);
-  if(!item) return;
-  item.qty = Math.max(1, item.qty + d);
-  renderCart();
-}
-function renderCart(){
-  const el = document.getElementById("cartItems");
-  const count = cart.reduce((s,c)=>s+c.qty,0);
-  document.getElementById("cartCount").textContent = count;
-  if(cart.length === 0){
-    el.innerHTML = `<div class="cart-empty">Your bag is empty.<br>Gloria finds that unlikely to last.</div>`;
-  } else {
-    el.innerHTML = cart.map(c => {
-      const p = byId(c.id);
-      return `
-      <div class="cart-item">
-        <div class="ci-art tone-${p.tone}"><span class="mono">GB</span></div>
-        <div>
-          <h4>${p.name}</h4>
-          <div class="ci-opt">${c.option}</div>
-          <div class="ci-price">${fmt(p.price * c.qty)}</div>
-          <div class="ci-controls">
-            <div class="qty-box">
-              <button onclick="changeCartQty('${c.id}','${c.option.replace(/'/g,"\\'")}',-1)">&minus;</button>
-              <span>${c.qty}</span>
-              <button onclick="changeCartQty('${c.id}','${c.option.replace(/'/g,"\\'")}',1)">+</button>
-            </div>
-            <button class="ci-remove" onclick="removeFromCart('${c.id}','${c.option.replace(/'/g,"\\'")}')">Remove</button>
-          </div>
-        </div>
-      </div>`;
-    }).join("");
-  }
-  const subtotal = cart.reduce((s,c)=> s + byId(c.id).price * c.qty, 0);
-  document.getElementById("cartSubtotal").textContent = fmt(subtotal);
-  document.getElementById("cartTotal").textContent = fmt(subtotal);
-  document.getElementById("checkoutBtn").disabled = cart.length === 0;
-}
-function openCart(){ document.getElementById("cartDrawer").classList.add("open"); document.getElementById("scrim").classList.add("open"); }
-function closeCart(){ document.getElementById("cartDrawer").classList.remove("open"); document.getElementById("scrim").classList.remove("open"); }
-document.getElementById("cartBtn").onclick = openCart;
-document.getElementById("cartClose").onclick = closeCart;
-document.getElementById("scrim").onclick = closeCart;
-document.getElementById("checkoutBtn").onclick = () => {
-  if(cart.length===0) return;
-  showToast("Checkout is a demo \u2014 Gloria\u2019s accountant is still setting up payments.");
-};
 
 /* ---------- TOAST ---------- */
 let toastTimer;
@@ -1128,7 +986,7 @@ window.addEventListener("scroll", () => {
   navEl.classList.toggle("scrolled", window.scrollY > 40);
 }, {passive:true});
 
-/* ---------- GOLD DUST PARTICLES (hero, one orchestrated ambient moment) ---------- */
+/* ---------- GOLD DUST PARTICLES (hero) ---------- */
 (function initDust(){
   const holder = document.getElementById("goldDust");
   const count = window.innerWidth < 700 ? 10 : 18;
@@ -1174,7 +1032,7 @@ function navigate(path){ window.location.hash = "#" + path; }
 
 function router(){
   const hash = window.location.hash.replace(/^#/, "") || "/home";
-  const parts = hash.split("/").filter(Boolean); // e.g. ["product","gold-chain"]
+  const parts = hash.split("/").filter(Boolean);
   const root = parts[0] || "home";
 
   Object.values(views).forEach(v => v.classList.remove("active"));
@@ -1202,7 +1060,7 @@ function router(){
   setTimeout(armReveals, 50);
 }
 window.addEventListener("hashchange", router);
-window.addEventListener("DOMContentLoaded", () => { renderCart(); router(); armReveals(); });
+window.addEventListener("DOMContentLoaded", () => { router(); armReveals(); });
 </script>
 </body>
 </html>
