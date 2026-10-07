@@ -244,14 +244,20 @@ p{margin:0;}
   aspect-ratio:4/5; position:relative; overflow:hidden;
   display:flex; align-items:center; justify-content:center;
 }
+.card-art img {
+  width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+  transition:transform .6s var(--ease);
+}
+.card:hover .card-art img{transform:scale(1.05);}
 .card-art .mono{
   font-family:var(--serif); font-style:italic; font-size:3.4rem; color:rgba(244,239,229,0.5);
   transition:transform .6s var(--ease);
 }
 .card:hover .card-art .mono{transform:scale(1.08) rotate(-2deg);}
 .card-art .cat-tag{
-  position:absolute; top:14px; left:14px; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+  position:absolute; top:14px; left:14px; z-index:2; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
   color:rgba(244,239,229,0.85); border:1px solid rgba(244,239,229,0.35); padding:5px 10px; border-radius:20px;
+  background:rgba(16,12,13,0.3); backdrop-filter:blur(4px);
 }
 .tone-gold{background:linear-gradient(155deg,#7a5a2b,#B48A47 45%,#3a2a12);}
 .tone-plum{background:linear-gradient(155deg,#2a1526,#6C3D5D 45%,#1c0e19);}
@@ -320,6 +326,7 @@ p{margin:0;}
   aspect-ratio:4/5; position:sticky; top:110px; display:flex; align-items:center; justify-content:center;
   border-radius:2px; overflow:hidden;
 }
+.pd-art img{width:100%; height:100%; object-fit:cover;}
 .pd-art .mono{font-family:var(--serif); font-style:italic; font-size:6rem; color:rgba(244,239,229,0.55);}
 .pd-info .eyebrow{margin-bottom:14px; display:block;}
 .pd-info h1{font-size:clamp(1.9rem,4vw,2.7rem); margin-bottom:10px; line-height:1.08;}
@@ -682,9 +689,10 @@ footer{background:var(--black); color:var(--ivory); padding:80px 0 28px;}
    ============================================================ */
 
 /* ---------- PRODUCT DATA ---------- */
-/* REPLACE squareLink VALUES WITH YOUR ACTUAL SQUARE PAY LINKS */
+/* REPLACE image FILE PATHS WITH YOUR ACTUAL IMAGE FILENAMES (.png or .jpg) */
 const PRODUCTS = [
   { id:"gold-chain", name:"Birdmoney Gold Chain", category:"Jewelry", price:2400,
+    image:"images/gold-chain.png",
     squareLink:"https://square.link/u/example-gold-chain",
     tagline:"Heavy is a compliment.",
     desc:"A hand-linked chain in antiqued gold vermeil, substantial enough to announce itself before Gloria enters a room.",
@@ -692,6 +700,7 @@ const PRODUCTS = [
     story:"Gloria commissioned this chain after deciding her previous three were \u201cacceptable, but not conversational.\u201d",
     tone:"gold" },
   { id:"feather-earrings", name:"Golden Feather Earrings", category:"Jewelry", price:980,
+    image:"images/feather-earrings.png",
     squareLink:"https://square.link/u/example-feather-earrings",
     tagline:"Light as a feather. Priced like one isn\u2019t.",
     desc:"Sculpted gold feather drops that catch the light the way Gloria catches attention \u2014 immediately, and on purpose.",
@@ -699,6 +708,7 @@ const PRODUCTS = [
     story:"Modeled after a single tail feather Gloria insisted was \u201cthe good one.\u201d",
     tone:"gold" },
   { id:"statement-necklace", name:"Birdmoney Statement Necklace", category:"Jewelry", price:4200,
+    image:"images/statement-necklace.png",
     squareLink:"https://square.link/u/example-statement-necklace",
     tagline:"Subtlety was never the assignment.",
     desc:"Tiered gold beadwork built to sit exactly where the eye lands first. Gloria wears it to rooms she has not been invited to.",
@@ -706,6 +716,7 @@ const PRODUCTS = [
     story:"Gloria personally rejected seventeen prototypes before approving this one.",
     tone:"gold" },
   { id:"signature-bracelet", name:"Gloria\u2019s Signature Bracelet", category:"Jewelry", price:1150,
+    image:"images/signature-bracelet.png",
     squareLink:"https://square.link/u/example-signature-bracelet",
     tagline:"Her name, technically, nowhere on it.",
     desc:"A chunky link bracelet finished in the same antique gold as the chain \u2014 designed to be worn stacked or alone. Gloria wears three.",
@@ -713,6 +724,7 @@ const PRODUCTS = [
     story:"The clasp took four jewelers and one very stern letter to get right.",
     tone:"gold" },
   { id:"pearl-collection", name:"Gloria\u2019s Pearl Collection", category:"Jewelry", price:3300,
+    image:"images/pearl-collection.png",
     squareLink:"https://square.link/u/example-pearl-collection",
     tagline:"Traditional, on her terms.",
     desc:"Freshwater pearls in irregular baroque shapes, strung the way Gloria insists pearls should be worn: imperfectly, and often.",
@@ -720,6 +732,7 @@ const PRODUCTS = [
     story:"Gloria refuses to call these \u201cclassic.\u201d She calls them \u201ccorrect.\u201d",
     tone:"pearl" },
   { id:"couture-jacket", name:"Birdmoney Couture Jacket", category:"Fashion", price:3600,
+    image:"images/couture-jacket.png",
     squareLink:"https://square.link/u/example-couture-jacket",
     tagline:"Structured for a woman who does not slouch.",
     desc:"A sharply tailored jacket in deep plum wool, feather-trimmed at the collar in a nod to the house silhouette.",
@@ -727,6 +740,7 @@ const PRODUCTS = [
     story:"The trim is trimmed by hand. Gloria has opinions about machine feathers.",
     tone:"plum" },
   { id:"velvet-bag", name:"Purple Velvet Birdmoney Bag", category:"Fashion", price:2950,
+    image:"images/velvet-bag.png",
     squareLink:"https://square.link/u/example-velvet-bag",
     tagline:"Big enough for essentials. Hers, specifically.",
     desc:"A structured velvet top-handle bag in deep plum, finished with an antique brass clasp Gloria refers to as \u201cthe good hardware.\u201d",
@@ -734,6 +748,7 @@ const PRODUCTS = [
     story:"Gloria has never once put anything practical inside it.",
     tone:"plum" },
   { id:"sunglasses", name:"Wealthy Bird Sunglasses", category:"Accessories", price:640,
+    image:"images/sunglasses.png",
     squareLink:"https://square.link/u/example-sunglasses",
     tagline:"For looking, and for being looked at.",
     desc:"Oversized frames in warm tortoise acetate, designed for a woman who considers eye contact optional.",
@@ -741,6 +756,7 @@ const PRODUCTS = [
     story:"Gloria wears these indoors. She has never explained why. No one has asked twice.",
     tone:"ivory" },
   { id:"feather-brooch", name:"Couture Feather Brooch", category:"Accessories", price:1320,
+    image:"images/feather-brooch.png",
     squareLink:"https://square.link/u/example-feather-brooch",
     tagline:"One small statement. Still a statement.",
     desc:"A sculpted brooch in gold and dusty rose enamel, pinned wherever Gloria feels a look needs \u201cone more thing.\u201d",
@@ -748,6 +764,7 @@ const PRODUCTS = [
     story:"Reserved for outfits Gloria considers \u201calmost finished.\u201d",
     tone:"gold" },
   { id:"golden-egg", name:"Golden Egg Pendant", category:"Accessories", price:1890,
+    image:"images/golden-egg.png",
     squareLink:"https://square.link/u/example-golden-egg",
     tagline:"A nest egg, worn literally.",
     desc:"A solid gold egg pendant on a fine box chain \u2014 Gloria\u2019s answer to \u201cdiversify your assets.\u201d",
@@ -755,6 +772,7 @@ const PRODUCTS = [
     story:"Gloria calls it a metaphor. Her accountant calls it a write-off.",
     tone:"gold" },
   { id:"feather-crown", name:"Limited Edition Feather Crown", category:"Private Collection", price:5100,
+    image:"images/feather-crown.png",
     squareLink:"https://square.link/u/example-feather-crown",
     tagline:"Not a hat. A position.",
     desc:"A hand-built crown of dyed feathers and gold filigree, produced in a run of twelve. Gloria owns the first and the last.",
@@ -762,6 +780,7 @@ const PRODUCTS = [
     story:"Ten remain. Gloria is not telling anyone which ten.",
     tone:"plum" },
   { id:"private-reserve", name:"Gloria\u2019s Private Reserve", category:"Private Collection", price:12000,
+    image:"images/private-reserve.png",
     squareLink:"https://square.link/u/example-private-reserve",
     tagline:"Not everything Gloria owns is for sale.",
     desc:"A rotating selection from Gloria\u2019s personal archive. Availability changes without notice, explanation, or apology.",
@@ -831,11 +850,15 @@ const fmt = n => "$" + n.toLocaleString("en-US");
 
 /* ---------- CARD RENDERING ---------- */
 function productCard(p){
+  const artContent = p.image 
+    ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` 
+    : `<span class="mono">GB</span>`;
+
   return `
   <div class="card" data-id="${p.id}" onclick="if(!event.target.closest('a') && !event.target.closest('button')) navigate('/product/${p.id}')">
     <div class="card-art tone-${p.tone}">
       <span class="cat-tag">${p.category}</span>
-      <span class="mono">GB</span>
+      ${artContent}
     </div>
     <div class="card-info">
       <div class="cname">${p.name}</div>
@@ -911,8 +934,12 @@ function renderProduct(id){
   if(!selectedOptions[id]) selectedOptions[id] = p.options[0];
   document.getElementById("pdCrumb").innerHTML = `<a href="#/shop">Shop</a> / <a href="#/shop">${p.category}</a> / ${p.name}`;
 
+  const detailArt = p.image 
+    ? `<img src="${p.image}" alt="${p.name}">` 
+    : `<span class="mono">GB</span>`;
+
   document.getElementById("pdWrap").innerHTML = `
-    <div class="pd-art tone-${p.tone}"><span class="mono">GB</span></div>
+    <div class="pd-art tone-${p.tone}">${detailArt}</div>
     <div class="pd-info">
       <span class="eyebrow">${p.category}</span>
       <h1>${p.name}</h1>
